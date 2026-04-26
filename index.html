@@ -84,29 +84,31 @@ section {
   border-radius: 15px;
 }
 
-/* Gallery */
-.gallery-wrapper {
-  overflow: hidden;
+/* Gallery GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
   max-width: 1000px;
   margin: auto;
 }
 
-.gallery {
-  display: flex;
-  gap: 15px;
-  width: max-content;
-}
-
 .gallery img,
 .gallery video {
-  width: 200px;
-  height: 150px;
+  width: 100%;
+  height: 160px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Viewer */
+.gallery img:hover,
+.gallery video:hover {
+  transform: scale(1.05);
+}
+
+/* Fullscreen Viewer */
 .viewer {
   position: fixed;
   top: 0;
@@ -224,11 +226,7 @@ href="https://wa.me/917305159812?text=Hello%2C%20I%20need%20CCTV%20installation"
 <!-- Gallery -->
 <section>
 <h2>🖼️ Projects</h2>
-
-<div class="gallery-wrapper">
-  <div class="gallery" id="gallery"></div>
-</div>
-
+<div class="gallery" id="gallery"></div>
 </section>
 
 <!-- Viewer -->
@@ -253,59 +251,31 @@ href="https://wa.me/917305159812?text=Hello%2C%20I%20need%20CCTV%20installation"
 
 <script>
 
-// LOAD + INFINITE LOOP
+// LOAD GALLERY (NO SLIDER)
 function loadGallery() {
   const gallery = document.getElementById("gallery");
 
-  let items = [];
-
-  for (let i = 1; i <= 20; i++) {
+  for (let i = 1; i <= 25; i++) {
     let img = document.createElement("img");
     img.src = `images/image (${i}).jpeg`;
     img.onclick = () => openViewer(img.src, "img");
     img.onerror = () => img.remove();
-    items.push(img);
+    gallery.appendChild(img);
   }
 
-  for (let i = 1; i <= 20; i++) {
+  for (let i = 1; i <= 30; i++) {
     let video = document.createElement("video");
     video.src = `images/video (${i}).mp4`;
+    video.controls = true;
     video.onclick = () => openViewer(video.src, "video");
     video.onerror = () => video.remove();
-    items.push(video);
+    gallery.appendChild(video);
   }
-
-  items.forEach(item => gallery.appendChild(item));
-
-  // CLONE FOR LOOP
-  items.forEach(item => {
-    let clone = item.cloneNode(true);
-    clone.onclick = item.onclick;
-    gallery.appendChild(clone);
-  });
-
-  autoScroll();
-}
-
-function autoScroll() {
-  const wrapper = document.querySelector(".gallery-wrapper");
-
-  function scroll() {
-    wrapper.scrollLeft += 1;
-
-    if (wrapper.scrollLeft >= wrapper.scrollWidth / 2) {
-      wrapper.scrollLeft = 0;
-    }
-
-    requestAnimationFrame(scroll);
-  }
-
-  scroll();
 }
 
 loadGallery();
 
-// VIEWER
+// FULL VIEW
 function openViewer(src, type) {
   const viewer = document.getElementById("viewer");
   viewer.style.display = "flex";
