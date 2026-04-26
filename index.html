@@ -6,8 +6,6 @@
 <title>JK Security Hardwares & Networking</title>
 
 <style>
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -32,7 +30,7 @@ header {
   background: rgba(0,0,0,0.65);
 }
 
-/* ✅ SOFT PREMIUM BUTTON */
+/* Buttons */
 .btn {
   display: inline-block;
   margin: 10px;
@@ -42,15 +40,13 @@ header {
   color: #000;
   text-decoration: none;
   font-weight: 600;
+  box-shadow: 0 0 10px #00e5ff;
   transition: 0.3s;
-  box-shadow: 0 0 6px rgba(0,229,255,0.5),
-              0 0 12px rgba(0,229,255,0.3);
 }
 
 .btn:hover {
+  box-shadow: 0 0 20px #00e5ff;
   transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0,229,255,0.6),
-              0 0 20px rgba(0,229,255,0.4);
 }
 
 /* Section */
@@ -70,87 +66,92 @@ section {
 
 .card {
   background: rgba(255,255,255,0.05);
-  padding: 20px;
+  padding: 25px;
   border-radius: 15px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
-.card:hover { transform: translateY(-6px); }
-
-/* Icon animation */
-.icon {
-  font-size: 35px;
-  animation: float 2s infinite;
-}
-
-@keyframes float {
-  50% { transform: translateY(-5px); }
-}
-
-/* Preview */
-.preview {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 10px;
-  display: none;
-}
-
-/* Sliding desc */
-.desc {
-  max-height: 0;
-  overflow: hidden;
-  transition: 0.4s;
+.card p {
   font-size: 14px;
   color: #ccc;
 }
 
-.card.active .desc { max-height: 200px; }
-.card.active .preview { display: block; }
+/* Reviews */
+.review-box {
+  max-width: 800px;
+  margin: auto;
+  background: rgba(255,255,255,0.06);
+  padding: 25px;
+  border-radius: 15px;
+}
 
 /* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 15px;
+.gallery-wrapper {
+  overflow: hidden;
   max-width: 1000px;
   margin: auto;
 }
 
-.gallery img, .gallery video {
-  width: 100%;
+.gallery {
+  display: flex;
+  gap: 15px;
+  width: max-content;
+}
+
+.gallery img,
+.gallery video {
+  width: 200px;
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-/* Reviews */
-.review-card {
-  background: rgba(255,255,255,0.06);
-  padding: 15px;
-  border-radius: 12px;
-  text-align: left;
+/* Viewer */
+.viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.viewer img,
+.viewer video {
+  max-width: 90%;
+  max-height: 90%;
 }
 
 /* Form */
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
 form {
-  max-width: 400px;
-  margin: auto;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.06);
+  padding: 30px;
+  border-radius: 20px;
 }
 
 form input, form textarea {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
+  padding: 12px;
+  margin: 10px 0;
   border-radius: 10px;
   border: none;
 }
 
 form button {
   width: 100%;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 12px;
+  border-radius: 25px;
   border: none;
   background: #00e5ff;
 }
@@ -160,6 +161,7 @@ footer {
   text-align: center;
   padding: 20px;
   background: #000;
+  color: #aaa;
 }
 </style>
 </head>
@@ -167,158 +169,164 @@ footer {
 <body>
 
 <video autoplay muted loop class="bg-video">
-<source src="https://www.w3schools.com/howto/rain.mp4">
+  <source src="https://www.w3schools.com/howto/rain.mp4">
 </video>
 
 <header>
 <h1>JK Security Hardwares & Networking</h1>
 <p>Advanced CCTV | Networking | Laptop Services</p>
 
-<a class="btn" href="tel:07305159812">📞 Call</a>
-<a class="btn" href="https://wa.me/917305159812">💬 WhatsApp</a>
+<a class="btn" href="tel:07305159812">📞 Call Now</a>
 
-<br>
-<a class="btn" href="#services">Services</a>
-<a class="btn" href="#gallery">Gallery</a>
-<a class="btn" href="#reviews">Reviews</a>
-<a class="btn" href="#contact">Contact</a>
+<a class="btn"
+href="https://wa.me/917305159812?text=Hello%2C%20I%20need%20CCTV%20installation">
+💬 WhatsApp
+</a>
 </header>
 
-<!-- SERVICES -->
-<section id="services">
+<!-- Reviews -->
+<section>
+<h2>⭐ Customer Reviews</h2>
+<div class="review-box">
+
+<p style="font-size:24px;">★★★★★ 5.0 (5 Reviews)</p>
+<hr>
+
+<p><b>Vijay Karthick</b><br>Excellent service! Laptop serviced perfectly.</p>
+<p><b>Terish Vgn</b><br>Good respond, Cost low 👍</p>
+<p><b>Hharish</b><br>Low cost WiFi camera installation</p>
+<p><b>Gajendra</b><br>Good installation 👌</p>
+<p><b>Honest Arts</b><br>Good service 👍</p>
+
+</div>
+</section>
+
+<!-- Services -->
+<section>
 <h2>💼 Our Services</h2>
-
 <div class="services">
 
-<div class="card" onclick="toggleDesc(this)">
-<div class="icon">📷</div>
-<h3>CCTV Installation</h3>
-<img src="https://images.unsplash.com/photo-1581090700227-1e8c4d3f9b6b" class="preview">
-<p class="desc">Installation, wiring, maintenance, security setup.</p>
-</div>
+<div class="card">📷 CCTV Installation
+<p>High quality security camera setup.</p></div>
 
-<div class="card" onclick="toggleDesc(this)">
-<div class="icon">📡</div>
-<h3>WiFi Setup</h3>
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97" class="preview">
-<p class="desc">WiFi setup, mobile connection & troubleshooting.</p>
-</div>
+<div class="card">📡 WiFi Camera
+<p>Mobile remote monitoring.</p></div>
 
-<div class="card" onclick="toggleDesc(this)">
-<div class="icon">💻</div>
-<h3>Laptop Service</h3>
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="preview">
-<p class="desc">Repair, OS install & new laptop guidance.</p>
-</div>
+<div class="card">💻 Laptop Service
+<p>Repair & upgrade solutions.</p></div>
 
-<div class="card" onclick="toggleDesc(this)">
-<div class="icon">🌐</div>
-<h3>Networking</h3>
-<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" class="preview">
-<p class="desc">Networking, attendance system & monitoring setup.</p>
-</div>
+<div class="card">🌐 Networking
+<p>Office & home networking setup.</p></div>
 
 </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-<h2>🖼️ Gallery</h2>
-<div class="gallery" id="galleryContainer"></div>
+<!-- Gallery -->
+<section>
+<h2>🖼️ Projects</h2>
+
+<div class="gallery-wrapper">
+  <div class="gallery" id="gallery"></div>
+</div>
+
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews">
-<h2>⭐ Google Reviews</h2>
+<!-- Viewer -->
+<div class="viewer" id="viewer" onclick="closeViewer()"></div>
 
-<div class="services">
-<div class="card"><h3>⭐ 5.0 Rating</h3><p>5 Reviews</p></div>
-
-<div class="review-card">
-<b>Vijay Karthick</b><br>
-Excellent service! My laptop was serviced beautifully and now works perfectly.
-</div>
-
-<div class="review-card">
-<b>Terish Vgn</b><br>
-Good respond, cost low, best service 👍
-</div>
-
-<div class="review-card">
-<b>Hharish Hharish</b><br>
-Easy installation for WiFi camera, low cost, safe security 🔐
-</div>
-
-<div class="review-card">
-<b>Gajendra Gajendra</b><br>
-Good proper installation and response 👌
-</div>
-
-<div class="review-card">
-<b>Honest Arts</b><br>
-Good service and good response 👍🏻
-</div>
-
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
+<!-- Form -->
+<section>
 <h2>📩 Enquiry</h2>
-
+<div class="form-container">
 <form onsubmit="submitForm(event)">
-<input type="text" id="name" placeholder="Name" required>
-<input type="tel" id="phone" placeholder="Phone" required>
-<textarea id="message" placeholder="Requirement"></textarea>
+<input type="text" placeholder="Your Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<textarea placeholder="Your Requirement"></textarea>
 <button type="submit">Submit</button>
 </form>
-
+</div>
 </section>
 
-<footer>© 2026 JK Security</footer>
+<footer>
+© 2026 JK Security Hardwares & Networking
+</footer>
 
 <script>
-// Gallery
-function loadGallery(){
-let g=document.getElementById("galleryContainer");
 
-for(let i=1;i<=10;i++){
-let img=document.createElement("img");
-img.src=`images/image (${i}).jpeg`;
-img.onerror=()=>img.remove();
-g.appendChild(img);
+// LOAD + INFINITE LOOP
+function loadGallery() {
+  const gallery = document.getElementById("gallery");
+
+  let items = [];
+
+  for (let i = 1; i <= 20; i++) {
+    let img = document.createElement("img");
+    img.src = `images/image (${i}).jpeg`;
+    img.onclick = () => openViewer(img.src, "img");
+    img.onerror = () => img.remove();
+    items.push(img);
+  }
+
+  for (let i = 1; i <= 20; i++) {
+    let video = document.createElement("video");
+    video.src = `images/video (${i}).mp4`;
+    video.onclick = () => openViewer(video.src, "video");
+    video.onerror = () => video.remove();
+    items.push(video);
+  }
+
+  items.forEach(item => gallery.appendChild(item));
+
+  // CLONE FOR LOOP
+  items.forEach(item => {
+    let clone = item.cloneNode(true);
+    clone.onclick = item.onclick;
+    gallery.appendChild(clone);
+  });
+
+  autoScroll();
 }
 
-for(let i=1;i<=5;i++){
-let v=document.createElement("video");
-v.src=`images/video (${i}).mp4`;
-v.controls=true;
-v.onerror=()=>v.remove();
-g.appendChild(v);
+function autoScroll() {
+  const wrapper = document.querySelector(".gallery-wrapper");
+
+  function scroll() {
+    wrapper.scrollLeft += 1;
+
+    if (wrapper.scrollLeft >= wrapper.scrollWidth / 2) {
+      wrapper.scrollLeft = 0;
+    }
+
+    requestAnimationFrame(scroll);
+  }
+
+  scroll();
 }
-}
+
 loadGallery();
 
-// Toggle
-function toggleDesc(card){
-document.querySelectorAll(".card").forEach(c=>{
-if(c!==card) c.classList.remove("active");
-});
-card.classList.toggle("active");
+// VIEWER
+function openViewer(src, type) {
+  const viewer = document.getElementById("viewer");
+  viewer.style.display = "flex";
+
+  if (type === "img") {
+    viewer.innerHTML = `<img src="${src}">`;
+  } else {
+    viewer.innerHTML = `<video src="${src}" controls autoplay></video>`;
+  }
 }
 
-// WhatsApp Form
-function submitForm(e){
-e.preventDefault();
-
-let n=name.value;
-let p=phone.value;
-let m=message.value;
-
-let txt=`🔥 New Enquiry\n👤 Name:${n}\n📞 Phone:${p}\n🛠 Service:${m}`;
-
-window.open(`https://wa.me/917305159812?text=${encodeURIComponent(txt)}`);
+function closeViewer() {
+  document.getElementById("viewer").style.display = "none";
 }
+
+// FORM
+function submitForm(e) {
+  e.preventDefault();
+  alert("Enquiry submitted!");
+}
+
 </script>
 
 </body>
