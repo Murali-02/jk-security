@@ -6,6 +6,8 @@
 <title>JK Security Hardwares & Networking</title>
 
 <style>
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -41,12 +43,6 @@ header {
   text-decoration: none;
   font-weight: 600;
   box-shadow: 0 0 10px #00e5ff;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  box-shadow: 0 0 25px #00e5ff;
-  transform: translateY(-2px);
 }
 
 /* Section */
@@ -66,69 +62,65 @@ section {
 
 .card {
   background: rgba(255,255,255,0.05);
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
-  transition: 0.3s;
+  cursor: pointer;
 }
 
-.card:hover {
-  transform: translateY(-8px);
+/* ICON */
+.icon {
+  font-size: 35px;
+  animation: float 2s infinite;
 }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 15px;
-  max-width: 1000px;
-  margin: auto;
+@keyframes float {
+  50% { transform: translateY(-6px); }
 }
 
-.gallery img,
-.gallery video {
+/* Preview */
+.preview {
   width: 100%;
-  height: 150px;
+  height: 140px;
   object-fit: cover;
   border-radius: 10px;
-  transition: 0.3s;
+  display: none;
 }
 
-.gallery img:hover,
-.gallery video:hover {
-  transform: scale(1.05);
+/* Desc */
+.desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.card.active .desc { max-height: 200px; }
+.card.active .preview { display: block; }
+
+/* Reviews */
+.review-card {
+  background: rgba(255,255,255,0.06);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: left;
 }
 
 /* Form */
-.form-container {
-  display: flex;
-  justify-content: center;
-}
-
-form {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(255,255,255,0.06);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(0,255,255,0.15);
-}
-
 form input, form textarea {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+  padding: 10px;
+  margin: 8px 0;
   border-radius: 10px;
   border: none;
 }
 
 form button {
   width: 100%;
-  padding: 12px;
-  border-radius: 25px;
+  padding: 10px;
+  border-radius: 20px;
   border: none;
   background: #00e5ff;
-  font-weight: 600;
-  box-shadow: 0 0 10px #00e5ff;
 }
 
 /* Footer */
@@ -136,93 +128,150 @@ footer {
   text-align: center;
   padding: 20px;
   background: #000;
-  color: #aaa;
 }
-
 </style>
 </head>
 
 <body>
 
 <video autoplay muted loop class="bg-video">
-  <source src="https://www.w3schools.com/howto/rain.mp4">
+<source src="https://www.w3schools.com/howto/rain.mp4">
 </video>
 
 <header>
 <h1>JK Security Hardwares & Networking</h1>
 <p>Advanced CCTV | Networking | Laptop Services</p>
 
-<a class="btn" href="tel:07305159812">📞 Call Now</a>
+<a class="btn" href="tel:07305159812">Call</a>
+<a class="btn" href="https://wa.me/917305159812">WhatsApp</a>
 
-<a class="btn"
-href="https://wa.me/917305159812?text=Hello%2C%20I%20need%20CCTV%20installation">
-💬 WhatsApp
-</a>
+<br>
+<a class="btn" href="#services">Services</a>
+<a class="btn" href="#reviews">Reviews</a>
+<a class="btn" href="#contact">Contact</a>
 </header>
 
-<section>
-<h2>💼 Our Services</h2>
+<!-- SERVICES -->
+<section id="services">
+<h2>Our Services</h2>
+
 <div class="services">
-<div class="card">📷 CCTV Installation</div>
-<div class="card">📡 WiFi Camera Setup</div>
-<div class="card">💻 Laptop Service</div>
-<div class="card">🌐 Networking Solutions</div>
+
+<div class="card" onclick="toggleDesc(this)">
+<div class="icon">📷</div>
+<h3>CCTV Installation</h3>
+<img src="https://images.unsplash.com/photo-1581090700227-1e8c4d3f9b6b" class="preview">
+<p class="desc">Installation, wiring, maintenance, security setup.</p>
+</div>
+
+<div class="card" onclick="toggleDesc(this)">
+<div class="icon">📡</div>
+<h3>WiFi Setup</h3>
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97" class="preview">
+<p class="desc">WiFi setup, mobile access, troubleshooting.</p>
+</div>
+
+<div class="card" onclick="toggleDesc(this)">
+<div class="icon">💻</div>
+<h3>Laptop Service</h3>
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8" class="preview">
+<p class="desc">Repair, OS install, new laptop guidance.</p>
+</div>
+
+<div class="card" onclick="toggleDesc(this)">
+<div class="icon">🌐</div>
+<h3>Networking</h3>
+<img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" class="preview">
+<p class="desc">Networking, attendance system & monitoring.</p>
+</div>
+
 </div>
 </section>
 
-<section>
-<h2>🖼️ Projects</h2>
-<div class="gallery" id="gallery"></div>
+<!-- REVIEWS -->
+<section id="reviews">
+<h2>⭐ Google Reviews</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>⭐ 5.0 Rating</h3>
+<p>Based on 5 Reviews</p>
+</div>
+
+<div class="review-card">
+<strong>Vijay Karthick</strong><br>
+Excellent service! My laptop was serviced beautifully and now works perfectly. Really impressed with their professionalism and attention to detail. Thanks a lot 🩷
+</div>
+
+<div class="review-card">
+<strong>Terish Vgn</strong><br>
+Good respond, cost low, best service 👍
+</div>
+
+<div class="review-card">
+<strong>Hharish Hharish</strong><br>
+Easy installation for WiFi camera, low cost, safe security 🔐
+</div>
+
+<div class="review-card">
+<strong>Gajendra Gajendra</strong><br>
+Good proper installation and response 👌
+</div>
+
+<div class="review-card">
+<strong>Honest Arts</strong><br>
+Good service and good response 👍🏻
+</div>
+
+</div>
+
+<br>
+
+<a class="btn" href="https://www.google.com/search?q=JK+Security+Hardwares+Networking+reviews" target="_blank">
+View All Reviews
+</a>
+
 </section>
 
-<section>
-<h2>📩 Enquiry</h2>
-<div class="form-container">
+<!-- CONTACT -->
+<section id="contact">
+<h2>Enquiry</h2>
+
 <form onsubmit="submitForm(event)">
-<input type="text" placeholder="Your Name" required>
-<input type="tel" placeholder="Phone Number" required>
-<textarea placeholder="Your Requirement"></textarea>
+<input type="text" id="name" placeholder="Your Name" required>
+<input type="tel" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Your Requirement"></textarea>
 <button type="submit">Submit</button>
 </form>
-</div>
+
 </section>
 
 <footer>
-© 2026 JK Security Hardwares & Networking. All Rights Reserved.
+© 2026 JK Security
 </footer>
 
 <script>
-
-// 🔥 AUTO LOAD IMAGES + VIDEOS
-function loadGallery() {
-  const gallery = document.getElementById("gallery");
-
-  // ✅ IMAGES
-  for (let i = 1; i <= 25; i++) {
-    const img = document.createElement("img");
-    img.src = `images/image (${i}).jpeg`;
-    img.onerror = () => img.remove();
-    gallery.appendChild(img);
-  }
-
-  // ✅ VIDEOS
-  for (let i = 1; i <= 30; i++) {
-    const video = document.createElement("video");
-    video.src = `images/video (${i}).mp4`;
-    video.controls = true;
-    video.onerror = () => video.remove();
-    gallery.appendChild(video);
-  }
+// Accordion
+function toggleDesc(card){
+document.querySelectorAll(".card").forEach(c=>{
+if(c!==card) c.classList.remove("active");
+});
+card.classList.toggle("active");
 }
 
-loadGallery();
+// WhatsApp
+function submitForm(e){
+e.preventDefault();
 
-// FORM
-function submitForm(e) {
-  e.preventDefault();
-  alert("Enquiry submitted! We will contact you soon.");
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let msg=document.getElementById("message").value;
+
+let text=`New Enquiry\nName:${name}\nPhone:${phone}\nService:${msg}`;
+
+window.open(`https://wa.me/917305159812?text=${encodeURIComponent(text)}`);
 }
-
 </script>
 
 </body>
